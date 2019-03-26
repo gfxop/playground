@@ -5,8 +5,8 @@ import (
 	"net/http"
 )
 
-func helloWorld(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello W2orld")
+func helloWorld (w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf (w, "Hello world")
 }
 
 func main() {
