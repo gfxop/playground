@@ -3,13 +3,22 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 )
 
-func helloWorld (w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf (w, "Hello world")
+func getPort() string {
+	p := os.Getenv("Port")
+	if p != "" {
+		return ":" + p
+	}
+	return ":8080"
 }
 
 func main() {
-	http.HandleFunc("/", helloWorld)
-	http.ListenAndServe(":8080", nil)
+	http.HandleFunc("/", test)
+	http.ListenAndServe(getPort(), nil)
+}
+
+func test(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "this is a test")
 }
